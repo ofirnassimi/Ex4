@@ -8,14 +8,11 @@
 #include <iostream>
 #include <list>
 #include "Searchable.h"
-//#include "Solver.h"
 
 using namespace std;
 
 class ClientHandler {
 public:
-    //virtual string handleClient(list<string> buffers) = 0;
-    //virtual string handleClient(Searchable<T>* s) = 0;
     virtual string handleClient(int client_socket) = 0;
 };
 

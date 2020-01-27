@@ -13,17 +13,25 @@
 #include "Searchable.h"
 #include "State.h"
 #include "CacheManager.h"
+#include "ObjectAdapter.h"
 
 using namespace std;
 
 class MyTestClientHandler : public ClientHandler {
-    Solver<string, string>* s;
-    CacheManager<string>* cm;
+    Solver<Matrix, string>* s;
+    //Solver<list<string>, string>* s;
+    CacheManager<string, string>* cm;
 
 public:
-    MyTestClientHandler(Solver<string, string>* solver) {
+    MyTestClientHandler(Solver<Matrix, string>* solver, CacheManager<string, string>* cache) {
         this->s = solver;
+        this->cm = cache;
     }
+
+//    MyTestClientHandler(Solver<list<string>, string>* solver, CacheManager<string, string>* cache) {
+//        this->s = solver;
+//        this->cm = cache;
+//    }
 
     //this string includes the "end"
     bool isEnd(char buffer[]) {
@@ -58,51 +66,55 @@ public:
         bool isFirst = true;
         vector<vector<int>> mat;
         list<string> buffers;
+        string solution;
 
         int valread = read(client_socket, buffer, 1024);
         while (!isEnd(buffer)) {
             buffers.push_back(buffer);
-            buffer[1024] = {0};
+            memset(buffer, 0, 1024);
             valread = read(client_socket, buffer, 1024);
         }
 
-        //now the last buffer has "end"
         string goalState = buffers.back();
         buffers.pop_back();
         string initialState = buffers.back();
         buffers.pop_back();
 
-        str = cutEnd(buffer);
-        if (str.length() > 0) {
-            buffers.push_back(str);
-        }
-
-        //now we have initialState, goalState and buffers
+        //convert the buffers list to a matrix
         Matrix m = buffsToMatrix(buffers, initialState, goalState);
+
+        //convert the matrix to string by sending it to hash
+        string problem;
+
+        //if we already solved this problem, take it from cache
+        if (cm->isExist(problem)) {
+            solution = cm->getSolution(problem);
+        } else {
+            solution = s->solve(m);
+            cm->insert(problem, solution);
+        }
+        return solution;
     }
 
 
-    Searchable<Point> buffsToMatrix(list<string> buffers, string init, string goal) {
+    Matrix buffsToMatrix(list<string> buffers, string init, string goal) {
         vector<vector<int>> vecs = createVector(buffers.front());
         buffers.pop_front();
-        while(!buffers.empty()) {
+        while (!buffers.empty()) {
             vecs = addToMat(buffers.front(), vecs);
             buffers.pop_front();
         }
 
-        Point* is = stringToPoint(init);
-        Point* gs = stringToPoint(goal);
-        int initialCost = vecs.at(is->getX()).at(is->getY());
-        int goalCost = vecs.at(gs->getX()).at(gs->getY());
+        pair<int, int> is = stringToPair(init);
+        pair<int, int> gs = stringToPair(goal);
+        int initialCost = vecs[is.first][is.second];
+        int goalCost = vecs[gs.first][gs.second];
 
-        State<Point>* initialState = new State<Point>(is, initialCost, NULL);
-        State<Point>* goalState = new State<Point>(gs, goalCost, NULL);
+        State<pair<int, int>> initialState = State<pair<int, int>>(is, initialCost, NULL);
+        State<pair<int, int>> goalState = State<pair<int, int>>(gs, goalCost, NULL);
 
-        Searchable<Point> mat = new Matrix(vecs, initialState, goalState, State<Point>(Point(), 0, nullptr));
-
-        return mat;
+        return Matrix(vecs, initialState, goalState);
     }
-
 
     static vector<vector<int>> addToMat(string buffer, vector<vector<int>> mat) {
         vector<int> temp;
@@ -180,29 +192,6 @@ public:
 
         return ret;
     }
-
-    Point* stringToPoint(string str) {
-        vector<int> temp;
-        int i, j;
-        string curr = "";
-        int len = str.length();
-
-        for (int i = 0; i < len; i++) {
-            if ((str[i] == ' ') || (str[i] == ',')) {
-                if (curr != "") {
-                    temp.push_back(stoi(curr));
-                    curr = "";
-                }
-            } else {
-                curr += str[i];
-            }
-        }
-        temp.push_back(stoi(curr));
-
-        Point* p = new Point(temp.at(0), temp.at(1));
-        return p;
-    }
-
 };
 
 #endif //EX4_MYTESTCLIENTHANDLER_H

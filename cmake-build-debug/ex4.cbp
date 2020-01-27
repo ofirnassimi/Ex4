@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/ofir/CLionProjects/ex4/BFS.h">
+			<Option target="ex4"/>
+		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/CacheManager.h">
 			<Option target="ex4"/>
 		</Unit>
@@ -102,10 +105,13 @@
 		<Unit filename="/home/ofir/CLionProjects/ex4/MyTestClientHandler.h">
 			<Option target="ex4"/>
 		</Unit>
-		<Unit filename="/home/ofir/CLionProjects/ex4/Point.h">
+		<Unit filename="/home/ofir/CLionProjects/ex4/ObjectAdapter.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Searchable.h">
+			<Option target="ex4"/>
+		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/Searcher.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Server.h">

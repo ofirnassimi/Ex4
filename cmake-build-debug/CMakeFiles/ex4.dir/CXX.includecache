@@ -6,6 +6,40 @@
 
 #IncludeRegexTransform: 
 
+/home/ofir/CLionProjects/ex4/BFS.h
+State.h
+/home/ofir/CLionProjects/ex4/State.h
+set
+-
+Searchable.h
+/home/ofir/CLionProjects/ex4/Searchable.h
+list
+-
+queue
+-
+iostream
+-
+Searchable.h
+/home/ofir/CLionProjects/ex4/Searchable.h
+Searcher.h
+/home/ofir/CLionProjects/ex4/Searcher.h
+
+/home/ofir/CLionProjects/ex4/CacheManager.h
+unordered_map
+-
+list
+-
+string
+-
+stdio.h
+-
+fstream
+-
+unistd.h
+-
+functional
+-
+
 /home/ofir/CLionProjects/ex4/ClientHandler.h
 iostream
 -
@@ -14,6 +48,10 @@ list
 Searchable.h
 /home/ofir/CLionProjects/ex4/Searchable.h
 
+/home/ofir/CLionProjects/ex4/FileCacheManager.h
+CacheManager.h
+/home/ofir/CLionProjects/ex4/CacheManager.h
+
 /home/ofir/CLionProjects/ex4/Matrix.h
 iostream
 -
@@ -21,8 +59,6 @@ vector
 -
 Searchable.h
 /home/ofir/CLionProjects/ex4/Searchable.h
-Point.h
-/home/ofir/CLionProjects/ex4/Point.h
 
 /home/ofir/CLionProjects/ex4/MySerialServer.h
 iostream
@@ -63,14 +99,32 @@ Searchable.h
 /home/ofir/CLionProjects/ex4/Searchable.h
 State.h
 /home/ofir/CLionProjects/ex4/State.h
+CacheManager.h
+/home/ofir/CLionProjects/ex4/CacheManager.h
+ObjectAdapter.h
+/home/ofir/CLionProjects/ex4/ObjectAdapter.h
 
-/home/ofir/CLionProjects/ex4/Point.h
+/home/ofir/CLionProjects/ex4/ObjectAdapter.h
+Solver.h
+/home/ofir/CLionProjects/ex4/Solver.h
+Matrix.h
+/home/ofir/CLionProjects/ex4/Matrix.h
+Searcher.h
+/home/ofir/CLionProjects/ex4/Searcher.h
+BFS.h
+/home/ofir/CLionProjects/ex4/BFS.h
 
 /home/ofir/CLionProjects/ex4/Searchable.h
 State.h
 /home/ofir/CLionProjects/ex4/State.h
 list
 -
+
+/home/ofir/CLionProjects/ex4/Searcher.h
+string
+-
+Searchable.h
+/home/ofir/CLionProjects/ex4/Searchable.h
 
 /home/ofir/CLionProjects/ex4/Server.h
 iostream
@@ -99,4 +153,10 @@ MyTestClientHandler.h
 /home/ofir/CLionProjects/ex4/MyTestClientHandler.h
 StringReverser.h
 /home/ofir/CLionProjects/ex4/StringReverser.h
+CacheManager.h
+/home/ofir/CLionProjects/ex4/CacheManager.h
+FileCacheManager.h
+/home/ofir/CLionProjects/ex4/FileCacheManager.h
+ObjectAdapter.h
+/home/ofir/CLionProjects/ex4/ObjectAdapter.h
 

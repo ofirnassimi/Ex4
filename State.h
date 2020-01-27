@@ -12,15 +12,14 @@ class State {
     State<T>* cameFrom;
 
 public:
-    State(T state, double c, State<T>* last) {
-        this->st = state;
-        this->cost = c;
-        this->cameFrom = last;
+    State(T state, double c, State<T>* last) : st(state), cost(c), cameFrom(last) {};
+
+    bool equals(State<T> s) {
+        if (this->getState() == s.getState()) {
+            return true;
+        }
+        return false;
     }
-
-//    State() {}
-
-    bool Equals(State<T> s) {}
 
     T getState() {
         return st;
