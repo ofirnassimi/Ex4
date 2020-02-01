@@ -84,7 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/ofir/CLionProjects/ex4/AStar.h">
+			<Option target="ex4"/>
+		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/BFS.h">
+			<Option target="ex4"/>
+		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/BestFirstSearch.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/CacheManager.h">
@@ -93,10 +99,16 @@
 		<Unit filename="/home/ofir/CLionProjects/ex4/ClientHandler.h">
 			<Option target="ex4"/>
 		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/DFS.h">
+			<Option target="ex4"/>
+		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/FileCacheManager.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Matrix.h">
+			<Option target="ex4"/>
+		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/MyParallelServer.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/MySerialServer.h">
@@ -108,6 +120,9 @@
 		<Unit filename="/home/ofir/CLionProjects/ex4/ObjectAdapter.h">
 			<Option target="ex4"/>
 		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/SearchAlgos.h">
+			<Option target="ex4"/>
+		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Searchable.h">
 			<Option target="ex4"/>
 		</Unit>
@@ -115,6 +130,9 @@
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Server.h">
+			<Option target="ex4"/>
+		</Unit>
+		<Unit filename="/home/ofir/CLionProjects/ex4/Sockets.h">
 			<Option target="ex4"/>
 		</Unit>
 		<Unit filename="/home/ofir/CLionProjects/ex4/Solver.h">

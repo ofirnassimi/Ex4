@@ -3,16 +3,21 @@
 
 CMakeFiles/ex4.dir/main.cpp.o
  /home/ofir/CLionProjects/ex4/BFS.h
+ /home/ofir/CLionProjects/ex4/BestFirstSearch.h
  /home/ofir/CLionProjects/ex4/CacheManager.h
  /home/ofir/CLionProjects/ex4/ClientHandler.h
+ /home/ofir/CLionProjects/ex4/DFS.h
  /home/ofir/CLionProjects/ex4/FileCacheManager.h
  /home/ofir/CLionProjects/ex4/Matrix.h
+ /home/ofir/CLionProjects/ex4/MyParallelServer.h
  /home/ofir/CLionProjects/ex4/MySerialServer.h
  /home/ofir/CLionProjects/ex4/MyTestClientHandler.h
  /home/ofir/CLionProjects/ex4/ObjectAdapter.h
+ /home/ofir/CLionProjects/ex4/SearchAlgos.h
  /home/ofir/CLionProjects/ex4/Searchable.h
  /home/ofir/CLionProjects/ex4/Searcher.h
  /home/ofir/CLionProjects/ex4/Server.h
+ /home/ofir/CLionProjects/ex4/Sockets.h
  /home/ofir/CLionProjects/ex4/Solver.h
  /home/ofir/CLionProjects/ex4/State.h
  /home/ofir/CLionProjects/ex4/StringReverser.h

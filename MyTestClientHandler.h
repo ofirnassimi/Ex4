@@ -14,12 +14,13 @@
 #include "State.h"
 #include "CacheManager.h"
 #include "ObjectAdapter.h"
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
 class MyTestClientHandler : public ClientHandler {
     Solver<Matrix, string>* s;
-    //Solver<list<string>, string>* s;
     CacheManager<string, string>* cm;
 
 public:
@@ -27,11 +28,6 @@ public:
         this->s = solver;
         this->cm = cache;
     }
-
-//    MyTestClientHandler(Solver<list<string>, string>* solver, CacheManager<string, string>* cache) {
-//        this->s = solver;
-//        this->cm = cache;
-//    }
 
     //this string includes the "end"
     bool isEnd(char buffer[]) {
@@ -60,7 +56,8 @@ public:
     }
 
 
-    string handleClient(int client_socket) {
+    void handleClient(int client_socket) {
+    //virtual string handleClient(int client_socket) {
         char buffer[1024] = {0};
         string str;
         bool isFirst = true;
@@ -68,12 +65,15 @@ public:
         list<string> buffers;
         string solution;
 
+        //memset(buffer, 0, 1024);
         int valread = read(client_socket, buffer, 1024);
         while (!isEnd(buffer)) {
             buffers.push_back(buffer);
             memset(buffer, 0, 1024);
             valread = read(client_socket, buffer, 1024);
         }
+
+        string matrixString = listToString(buffers);
 
         string goalState = buffers.back();
         buffers.pop_back();
@@ -84,7 +84,9 @@ public:
         Matrix m = buffsToMatrix(buffers, initialState, goalState);
 
         //convert the matrix to string by sending it to hash
-        string problem;
+        hash<string> hasher;
+        int hash = int(hasher(matrixString));
+        string problem = to_string(hash);
 
         //if we already solved this problem, take it from cache
         if (cm->isExist(problem)) {
@@ -93,7 +95,11 @@ public:
             solution = s->solve(m);
             cm->insert(problem, solution);
         }
-        return solution;
+
+        int is_sent = send(client_socket, solution.c_str(), strlen(solution.c_str()), 0);
+        if (is_sent == -1) {
+            cout << "Error sending message" << endl;
+        }
     }
 
 
@@ -150,7 +156,6 @@ public:
             if ((buffer[i] == ' ') || (buffer[i] == ',')) {
                 if (curr != "") {
                     temp.push_back(stoi(curr));
-                    //mat[0][vecCount] = stoi(curr);
                     curr = "";
                     vecCount++;
                 }
@@ -192,6 +197,22 @@ public:
 
         return ret;
     }
+
+    string listToString(list<string> buffers) {
+        list<string> copy = buffers;
+        string str = "";
+        while (copy.size() != 0) {
+            str += copy.front();
+            copy.pop_front();
+        }
+        return str;
+    }
 };
 
 #endif //EX4_MYTESTCLIENTHANDLER_H
+
+
+
+
+
+

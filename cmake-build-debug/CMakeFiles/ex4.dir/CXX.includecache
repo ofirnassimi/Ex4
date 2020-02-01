@@ -24,6 +24,8 @@ Searchable.h
 Searcher.h
 /home/ofir/CLionProjects/ex4/Searcher.h
 
+/home/ofir/CLionProjects/ex4/BestFirstSearch.h
+
 /home/ofir/CLionProjects/ex4/CacheManager.h
 unordered_map
 -
@@ -48,6 +50,26 @@ list
 Searchable.h
 /home/ofir/CLionProjects/ex4/Searchable.h
 
+/home/ofir/CLionProjects/ex4/DFS.h
+State.h
+/home/ofir/CLionProjects/ex4/State.h
+set
+-
+Searchable.h
+/home/ofir/CLionProjects/ex4/Searchable.h
+list
+-
+queue
+-
+iostream
+-
+sstream
+-
+Searchable.h
+/home/ofir/CLionProjects/ex4/Searchable.h
+Searcher.h
+/home/ofir/CLionProjects/ex4/Searcher.h
+
 /home/ofir/CLionProjects/ex4/FileCacheManager.h
 CacheManager.h
 /home/ofir/CLionProjects/ex4/CacheManager.h
@@ -59,6 +81,24 @@ vector
 -
 Searchable.h
 /home/ofir/CLionProjects/ex4/Searchable.h
+
+/home/ofir/CLionProjects/ex4/MyParallelServer.h
+bits/socket.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+stack
+-
+thread
+-
+unistd.h
+-
+Server.h
+/home/ofir/CLionProjects/ex4/Server.h
+Sockets.h
+/home/ofir/CLionProjects/ex4/Sockets.h
 
 /home/ofir/CLionProjects/ex4/MySerialServer.h
 iostream
@@ -103,6 +143,10 @@ CacheManager.h
 /home/ofir/CLionProjects/ex4/CacheManager.h
 ObjectAdapter.h
 /home/ofir/CLionProjects/ex4/ObjectAdapter.h
+string
+-
+unordered_map
+-
 
 /home/ofir/CLionProjects/ex4/ObjectAdapter.h
 Solver.h
@@ -113,6 +157,32 @@ Searcher.h
 /home/ofir/CLionProjects/ex4/Searcher.h
 BFS.h
 /home/ofir/CLionProjects/ex4/BFS.h
+DFS.h
+/home/ofir/CLionProjects/ex4/DFS.h
+BestFirstSearch.h
+/home/ofir/CLionProjects/ex4/BestFirstSearch.h
+SearchAlgos.h
+/home/ofir/CLionProjects/ex4/SearchAlgos.h
+
+/home/ofir/CLionProjects/ex4/SearchAlgos.h
+iostream
+-
+vector
+-
+queue
+-
+sstream
+-
+unordered_map
+-
+cmath
+-
+stack
+-
+cfloat
+-
+cstring
+-
 
 /home/ofir/CLionProjects/ex4/Searchable.h
 State.h
@@ -131,6 +201,22 @@ iostream
 -
 ClientHandler.h
 /home/ofir/CLionProjects/ex4/ClientHandler.h
+
+/home/ofir/CLionProjects/ex4/Sockets.h
+sys/socket.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+cerrno
+-
+string
+-
+system_error
+-
+stdexcept
+-
 
 /home/ofir/CLionProjects/ex4/Solver.h
 
@@ -159,4 +245,6 @@ FileCacheManager.h
 /home/ofir/CLionProjects/ex4/FileCacheManager.h
 ObjectAdapter.h
 /home/ofir/CLionProjects/ex4/ObjectAdapter.h
+MyParallelServer.h
+/home/ofir/CLionProjects/ex4/MyParallelServer.h
 

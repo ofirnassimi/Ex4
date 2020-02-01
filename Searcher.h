@@ -13,8 +13,7 @@ using namespace std;
 template <class P, class S>
 class Searcher {
 public:
-    virtual S search(P &s) = 0;
-    //virtual S search(Searchable<P>* s) = 0;
+    virtual S search(P &p) = 0;
     virtual int getNumberOfNodesEvaluated() = 0;
 };
 

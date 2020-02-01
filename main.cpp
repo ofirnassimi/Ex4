@@ -6,12 +6,13 @@
 #include "CacheManager.h"
 #include "FileCacheManager.h"
 #include "ObjectAdapter.h"
+#include "MyParallelServer.h"
 
-int main() {
-    Server* s = new MySerialServer();
+int main(int argc, char* argv[]) {
+    server_side::MyParallelServer s;
     Solver<Matrix, string>* sol = new ObjectAdapter();
-    //Solver<list<string>, string>* sol = new ObjectAdapter();
     CacheManager<string, string>* cm = new FileCacheManager();
     ClientHandler* ch = new MyTestClientHandler(sol, cm);
-    s->open(5400, ch);
+    int port = stoi(argv[1]);
+    s.open(port, ch);
 }

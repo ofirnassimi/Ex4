@@ -41,22 +41,45 @@ public:
         int y = s.getState().second;
         list<State<pair<int, int>>*> succerssors;
 
-        int leftCost, rightCost, upCost, downCost;
+        double leftCost, rightCost, upCost, downCost;
 
         //if s is on top
         if (s.getState().first == 0) {
             //if s is on top left
-            if (s.getState().second == 0) {
-                //can go only right and down
-                //rightCost = calculateCost();
+            if (s.getState().second == 0) { //can go only right and down
+                //right State
+                pair<int, int> rightS (x, y + 1);
+                rightCost = s.getCost() + mat[x][y + 1];
+                succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
+                //down State
+                pair<int, int> downS (x + 1, y);
+                downCost = s.getCost() + mat[x + 1][y];
+                succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
 
                 //if s is on top right
-            } else if (s.getState().second == getMaxY()) {
-                //can go only left and down
+            } else if (s.getState().second == getMaxY()) { //can go only left and down
+                pair<int, int> leftS (x, y - 1);
+                leftCost = s.getCost() + mat[x][y - 1];
+                succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
+
+                pair<int, int> downS (x + 1, y);
+                downCost = s.getCost() + mat[x + 1][y];
+                succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
 
                 //s is on top but not the left or right
             } else {
                 //can go left, right and down
+                pair<int, int> rightS (x, y + 1);
+                rightCost = s.getCost() + mat[x][y + 1];
+                succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
+
+                pair<int, int> leftS (x, y - 1);
+                leftCost = s.getCost() + mat[x][y - 1];
+                succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
+
+                pair<int, int> downS (x + 1, y);
+                downCost = s.getCost() + mat[x + 1][y];
+                succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
             }
 
             //if s is the lowest
@@ -64,69 +87,102 @@ public:
             //if s is low left
             if (s.getState().second == 0) {
                 //can go only up and right
+                pair<int, int> upS (x - 1, y);
+                upCost = s.getCost() + mat[x - 1][y];
+                succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
+
+                pair<int, int> rightS (x, y + 1);
+                rightCost = s.getCost() + mat[x][y + 1];
+                succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
 
                 //if s is low right
             } else if (s.getState().second == getMaxY()) {
                 //can go only up and left
+                pair<int, int> upS (x - 1, y);
+                upCost = s.getCost() + mat[x - 1][y];
+                succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
+
+                pair<int, int> leftS (x, y - 1);
+                leftCost = s.getCost() + mat[x][y - 1];
+                succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
 
                 //s is low but not the left or right
             } else {
                 //can go left, right, up
+                pair<int, int> upS (x - 1, y);
+                upCost = s.getCost() + mat[x - 1][y];
+                succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
+
+                pair<int, int> leftS (x, y - 1);
+                leftCost = s.getCost() + mat[x][y - 1];
+                succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
+
+                pair<int, int> rightS (x, y + 1);
+                rightCost = s.getCost() + mat[x][y + 1];
+                succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
             }
 
             //if s is left and not top or low (because we already did it)
         } else if ((s.getState().second == 0) && (s.getState().first != 0) && (s.getState().first != getMaxX())) {
             //can go only up, down and right
+            pair<int, int> upS (x - 1, y);
+            upCost = s.getCost() + mat[x - 1][y];
+            succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
+
+            pair<int, int> downS (x + 1, y);
+            downCost = s.getCost() + mat[x + 1][y];
+            succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
+
+            pair<int, int> rightS (x, y + 1);
+            rightCost = s.getCost() + mat[x][y + 1];
+            succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
 
             //if s is right and not top or low
         } else if ((s.getState().second == getMaxY()) && (s.getState().first != 0) && (s.getState().first != getMaxX())) {
             //can go only up, down and left
+            pair<int, int> upS (x - 1, y);
+            upCost = s.getCost() + mat[x - 1][y];
+            succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
+
+            pair<int, int> downS (x + 1, y);
+            downCost = s.getCost() + mat[x + 1][y];
+            succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
+
+            pair<int, int> leftS (x, y - 1);
+            leftCost = s.getCost() + mat[x][y - 1];
+            succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
 
             //else, not on edges, can go on every direction
         } else {
+            pair<int, int> upS (x - 1, y);
+            upCost = s.getCost() + mat[x - 1][y];
+            succerssors.push_back(new State<pair<int, int>>(upS, upCost, &s));
 
+            pair<int, int> downS (x + 1, y);
+            downCost = s.getCost() + mat[x + 1][y];
+            succerssors.push_back(new State<pair<int, int>>(downS, downCost, &s));
+
+            pair<int, int> leftS (x, y - 1);
+            leftCost = s.getCost() + mat[x][y - 1];
+            succerssors.push_back(new State<pair<int, int>>(leftS, leftCost, &s));
+
+            pair<int, int> rightS (x, y + 1);
+            rightCost = s.getCost() + mat[x][y + 1];
+            succerssors.push_back(new State<pair<int, int>>(rightS, rightCost, &s));
         }
-
-//        //TODO: change costs!!!!
-//        //TODO: Change the way of checking if this variable is in matrix borders!!!
-//        int leftCost = mat[x][y - 1];
-//        int rightCost = mat[x][y + 1];
-//        int upCost = mat[x - 1][y];
-//        int downCost = mat[x + 1][y];
-//
-//        if (leftCost != NULL) {
-//            pair<int, int> l;
-//            l.first = x;
-//            l.second = y;
-//            //State<pair<int, int>>* sp = new State<pair<int, int>>(l, left, &s);
-//            succerssors.push_back(new State<pair<int, int>>(l, leftCost, &s));
-//        }
-//        if (rightCost != NULL) {
-//            pair<int, int> r;
-//            r.first = y + 1;
-//            r.second = x;
-//            //State<pair<int, int>>* sp = new State<pair<int, int>>(r, right, &s);
-//            succerssors.push_back(new State<pair<int, int>>(r, rightCost, &s));
-//        }
-//        if (upCost != NULL) {
-//            pair <int, int> u;
-//            u.first = y;
-//            u.second = x - 1;
-//            succerssors.push_back(new State<pair<int, int>>(u, upCost, &s));
-//        }
-//        if (downCost != NULL) {
-//            pair <int, int> d;
-//            d.first = y;
-//            d.second = x + 1;
-//            succerssors.push_back(new State<pair<int, int>>(d, downCost, &s));
-//        }
 
         return succerssors;
     }
 
 
     int calculateCost(State<pair<int, int>> curr, State<pair<int, int>> parent) {
-        return parent.getCost() + pointToValue(parent);
+        double totalCost;
+        if (parent.getCost() == NULL) {
+            totalCost = pointToValue(curr);
+        } else {
+            totalCost = parent.getCost() + pointToValue(curr);
+        }
+        return totalCost;
     }
 
 
@@ -144,6 +200,16 @@ public:
 
     int getMaxX() {
         return mat.size() - 1;
+    }
+
+
+    vector<vector<int>> getMat() {
+        return this->mat;
+    }
+
+
+    State<pair<int, int>>* getGoalState() {
+        return &this->goalState;
     }
 };
 
